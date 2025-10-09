@@ -1,0 +1,217 @@
+/* d:\anonyislive\PersonalProjects\TechAriv Website\css\responsive.css */
+
+/* Section Spacing */
+.section-spacing {
+    margin-bottom: 80px;
+}
+
+.section-top-spacing {
+    margin-top: 80px;
+}
+
+.section-title-spacing {
+    margin-bottom: 50px;
+}
+
+/* Header and Description styles */
+.section-header-centered {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.max-width-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-subheading {
+    font-size: 2rem;
+    text-align: left;
+}
+
+/* About Section Layout (for image and text side-by-side) */
+.about-layout {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.flex-item {
+    flex: 1;
+}
+
+.responsive-image-card {
+    width: 100%;
+    max-width: 100%; /* Ensure images don't overflow their container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px;
+    box-shadow: 0 0 40px rgba(0, 174, 255, 0.1);
+}
+
+/* FAQ Card */
+.faq-card {
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+
+/* Showcase Section */
+.showcase-description {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+}
+
+/* CTA Section */
+.cta-description {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+/* --- Media Queries for Mobile Responsiveness --- */
+
+/* --- HIDE CURSOR ON TOUCH DEVICES --- */
+@media (max-width: 992px) {
+    .pointer, .pointer-dot {
+        display: none;
+    }
+}
+
+@media (max-width: 992px) {
+    /* Tablet and Mobile */
+    .main-nav ul {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        padding: 0; /* Remove default padding */
+    }
+    .main-nav a {
+        font-size: 1.8rem;
+        padding: 10px;
+    }
+    .dropdown:hover .dropdown-content { display: none; } /* Disable hover dropdowns on mobile */
+}
+
+@media (max-width: 768px) {
+    /* Mobile */
+    /* Adjust general spacing */
+    .section-spacing,
+    .section-header-centered {
+        margin-bottom: 40px;
+    }
+    .section-top-spacing {
+        margin-top: 40px;
+    }
+    .section-title-spacing {
+        margin-bottom: 30px;
+    }
+
+    body {
+        padding-top: 60px; /* Adjust for smaller fixed header */
+    }
+    .main-header .container {
+        height: 60px;
+    }
+
+    /* Adjust font sizes for smaller screens */
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.8rem; }
+    .section-subheading-alt { font-size: 1.3rem; }
+    .section-subheading { font-size: 1.5rem; text-align: center; } /* Center align on mobile */
+
+    /* Stack flex items in about section */
+    .about-container, .about-layout { flex-direction: column; gap: 30px; }
+    .flex-item { flex: none; width: 100%; } /* Remove flex grow/shrink, take full width */
+    .about-container h2, .about-layout h2 { text-align: center; }
+    .about-image { position: relative; }
+    .experience-badge {
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Adjust grid layouts to stack */
+    .process-steps, .services-grid, .showcase-grid, .testimonial-grid, .values-grid {
+        grid-template-columns: 1fr; /* Force single column for all grids */
+        display: grid; /* Keep grid for gap consistency */
+        gap: 20px;
+    }
+    .service-card, .process-step, .showcase-item { margin-bottom: 0; width: 100%; } /* Reset old stacking styles */
+    .showcase-overlay h3 { font-size: 1.2rem; }
+    .showcase-overlay p { font-size: 0.9rem; }
+
+    /* Adjust text widths and margins */
+    .max-width-content, .faq-card, .showcase-description, .cta-description, .section-description {
+        max-width: 90%; /* Allow more width on smaller screens */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .faq-card { text-align: center; } /* Center FAQ text on mobile */
+
+    #hero { height: auto; padding: 100px 0; }
+
+    /* Timeline */
+    .timeline::after { left: 20px; }
+    .timeline-item { width: 100%; padding-left: 60px; padding-right: 10px; }
+    .timeline-item:nth-child(odd), .timeline-item:nth-child(even) {
+        left: 0;
+        text-align: left;
+    }
+
+    /* Grids */
+    .mission-vision-grid { grid-template-columns: 1fr; }
+
+    /* Case Study Page */
+    .case-study-entry, .case-study-entry:nth-child(even) {
+        flex-direction: column;
+        padding: 30px;
+    }
+    .case-study-image, .case-study-details {
+        max-width: 100%;
+    }
+    .results-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    /* Small Mobile */
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    .section-subheading { font-size: 1.3rem; }
+    p { font-size: 0.9rem; }
+    section { padding: 60px 0; }
+    .service-card, .contact-form, .case-study-entry { padding: 25px; }
+    .cta-button { padding: 12px 28px; font-size: 1rem; }
+    .results-grid { grid-template-columns: 1fr 1fr; } /* Stack to 2 columns on smallest screens */
+}
+
+/* --- Back to Top Button --- */
+.back-to-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0, 174, 255, 0.3);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.back-to-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}

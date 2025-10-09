@@ -1,0 +1,139 @@
+/* --- Preloader Styles --- */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-bg);
+    background-image: radial-gradient(circle at 50% 50%, var(--medium-bg) 0%, var(--dark-bg) 70%);
+    z-index: 10001; /* Higher than header */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+    opacity: 1;
+    visibility: visible;
+}
+
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.preloader-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preloader-logo {
+    width: 80px;
+    height: auto;
+    position: relative;
+    z-index: 3;
+    animation: logo-glow 3s ease-in-out infinite, logo-breathe 4s ease-in-out infinite;
+}
+
+/* Rotating gear effect */
+.preloader-gear {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    stroke: rgba(0, 174, 255, 0.2);
+    z-index: 2;
+    animation: spin 12s linear infinite;
+    opacity: 0.8;
+}
+
+
+/* Circular light effects */
+.light-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 174, 255, 0.3);
+    z-index: 1;
+    animation: pulse 3s ease-out infinite;
+}
+
+.light-circle.one {
+    width: 120px;
+    height: 120px;
+}
+
+.light-circle.two {
+    width: 120px;
+    height: 120px;
+    animation-delay: 0.75s;
+}
+
+.light-circle.three {
+    width: 120px;
+    height: 120px;
+    animation-delay: 1.5s;
+}
+
+/* Progress bar and counter */
+.progress-container {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    height: 20px;
+    display: flex;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 2px;
+    background-color: var(--border-color);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar-line {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+    border-radius: 2px;
+    animation: fill-progress 3s linear forwards;
+}
+
+.progress-counter {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    color: var(--medium-text);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Keyframe Animations */
+@keyframes logo-glow {
+    0%, 100% { filter: drop-shadow(0 0 5px rgba(0, 174, 255, 0.3)); }
+    50% { filter: drop-shadow(0 0 15px rgba(0, 174, 255, 0.7)); }
+}
+
+@keyframes logo-breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes fill-progress {
+    from { width: 0%; }
+    to { width: 100%; }
+}

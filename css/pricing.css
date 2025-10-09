@@ -1,0 +1,76 @@
+/* SEO Pricing Page Specific Styles */
+
+.pricing-container {
+    max-width: 1600px;
+}
+
+.pricing-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+}
+
+.pricing-grid {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.pricing-card {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-card-header {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.pricing-card-header h3 {
+    color: var(--light-text);
+    margin-bottom: 5px;
+}
+
+.price-tag span {
+    font-size: 1rem;
+    color: var(--medium-text);
+}
+
+.card-footer {
+    text-align: center;
+    margin-top: auto;
+    padding-top: 40px;
+}
+
+/* --- Mobile Responsiveness --- */
+
+/* For tablets and smaller desktops */
+@media (max-width: 1200px) {
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* For mobile phones */
+@media (max-width: 768px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-intro {
+        max-width: 90%;
+        margin-bottom: 30px;
+    }
+
+    /* .pricing-card { */
+        /* You can add specific mobile styles for cards if needed */
+    /* } */
+
+    /* .feature-list { */
+        /* Adjust feature list padding/margin for mobile if needed */
+    /* } */
+
+    .card-footer {
+        padding-top: 25px;
+    }
+}

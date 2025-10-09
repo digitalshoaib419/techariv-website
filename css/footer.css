@@ -1,0 +1,11 @@
+/* --- Footer --- */
+.main-footer {
+    background-color: #000;
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+.main-footer p {
+    color: var(--medium-text);
+    font-size: 0.9rem;
+}
