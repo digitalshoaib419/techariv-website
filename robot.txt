@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Block sensitive areas (optional but recommended)
+Disallow: /admin/
+Disallow: /login/
+Disallow: /config/
+Disallow: /private/
+
+# Allow important resources
+Allow: *.css
+Allow: *.js
+
+Sitemap: https://techariv.com/sitemap.xml

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Main Pages -->
+  <url>
+    <loc>https://techariv.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://techariv.com/aboutus</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://techariv.com/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Services Section -->
+  <url>
+    <loc>https://techariv.com/services/content-marketing</loc>
+  </url>
+  <url>
+    <loc>https://techariv.com/services/email-marketing</loc>
+  </url>
+  <url>
+    <loc>https://techariv.com/services/graphic-designing</loc>
+  </url>
+  <url>
+    <loc>https://techariv.com/services/search-engine-optimization</loc>
+  </url>
+  <url>
+    <loc>https://techariv.com/services/social-media-optimization</loc>
+  </url>
+  <url>
+    <loc>https://techariv.com/services/website-designing</loc>
+  </url>
+
+  <!-- Pricing Section -->
+  <url>
+    <loc>https://techariv.com/pricing/gmb-pricing</loc>
+  </url>
+  <url>
+    <loc>https://techariv.com/pricing/linkedin-pricing</loc>
+  </url>
+  <url>
+    <loc>https://techariv.com/pricing/one-time-optimization</loc>
+  </url>
+  <url>
+    <loc>https://techariv.com/pricing/ppc-pricing</loc>
+  </url>
+  <url>
+    <loc>https://techariv.com/pricing/seo-pricing</loc>
+  </url>
+  <url>
+    <loc>https://techariv.com/pricing/smo-pricing</loc>
+  </url>
+
+  <!-- More Section -->
+  <url>
+    <loc>https://techariv.com/more/case-study</loc>
+  </url>
+  <url>
+    <loc>https://techariv.com/more/testimonials</loc>
+  </url>
+
+  <!-- Default 404 Page -->
+  <url>
+    <loc>https://techariv.com/404</loc>
+  </url>
+
+</urlset>

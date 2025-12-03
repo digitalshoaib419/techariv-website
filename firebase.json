@@ -9,8 +9,22 @@
     "cleanUrls": true,
     "rewrites": [
       {
-        "source": "**",
+        "source": "/**",
         "destination": "/index.html"
+      }
+    ],
+   "errorPages": {
+      "404": "/404.html"
+    },
+    "headers": [
+      {
+        "source": "**/*.@(css|js|jpg|jpeg|png|webp|mp4|avif)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public,max-age=31536000,immutable"
+          }
+        ]
       }
     ]
   }

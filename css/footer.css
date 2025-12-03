@@ -9,3 +9,13 @@
     color: var(--medium-text);
     font-size: 0.9rem;
 }
+
+.social-media {
+    margin-top: 20px;
+}
+
+.social-media a {
+    color: var(--medium-text);
+    margin: 0 10px;
+    text-decoration: none;
+}
