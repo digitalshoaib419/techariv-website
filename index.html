@@ -47,6 +47,352 @@
 
   gtag('config', 'G-HBXHFW9LXR');
 </script>
+
+<style>
+    /* --- $1B VALUATION AESTHETIC (ENGINEERED) --- */
+    :root {
+        --bg-core: #020204;
+        --bg-surface: #0a0a0c;
+        --text-primary: #ffffff;
+        --text-secondary: #888891;
+        --text-tertiary: #4b4b52;
+        
+        --accent-glow: #3b82f6;
+        --accent-subtle: rgba(59, 130, 246, 0.1);
+        
+        --border-subtle: rgba(255, 255, 255, 0.06);
+        --border-active: rgba(255, 255, 255, 0.15);
+        
+        --glass: rgba(255, 255, 255, 0.02);
+        --glass-blur: blur(20px);
+        
+        /* Physics Easing */
+        --ease-elastic: cubic-bezier(0.16, 1, 0.3, 1);
+        --ease-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+    body {
+        background-color: var(--bg-core) !important;
+        color: var(--text-primary) !important;
+        font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+        overflow-x: hidden;
+        cursor: default;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- UTILITIES --- */
+    .container-fluid {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 4vw;
+    }
+
+    .grid-system {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 24px;
+    }
+
+    /* --- HERO SECTION (IMMERSIVE) --- */
+    #hero-immersive {
+        height: 100vh;
+        width: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        perspective: 1000px;
+    }
+
+    /* Dynamic Background Blobs */
+    .hero-blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.4;
+        z-index: 0;
+        will-change: transform;
+        animation: float-blob 10s infinite alternate ease-in-out;
+    }
+
+    .blob-1 {
+        width: 600px; height: 600px;
+        background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+        top: -20%; left: -10%;
+    }
+
+    .blob-2 {
+        width: 500px; height: 500px;
+        background: radial-gradient(circle, #a855f7 0%, transparent 70%);
+        bottom: -10%; right: -10%;
+        animation-delay: -5s;
+    }
+
+    /* Perspective Grid */
+    .hero-grid {
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        top: -50%; left: -50%;
+        background-image: 
+            linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 60px 60px;
+        transform: perspective(500px) rotateX(60deg);
+        opacity: 0.15;
+        pointer-events: none;
+        z-index: 0;
+        mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
+    }
+
+    .hero-content {
+        z-index: 2;
+        text-align: center;
+        max-width: 90vw;
+        will-change: transform;
+        transition: transform 0.1s ease-out;
+    }
+
+    .hero-headline {
+        font-size: clamp(3rem, 10vw, 8rem);
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        line-height: 0.95;
+        margin-bottom: 2rem;
+        opacity: 0; /* Handled by JS */
+        transform: translateY(20px);
+        background: linear-gradient(120deg, #71717a 0%, #ffffff 25%, #a1a1aa 50%, #ffffff 75%, #71717a 100%);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shine 4s linear infinite;
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
+    }
+
+    .hero-sub {
+        font-size: clamp(1rem, 1.5vw, 1.25rem);
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto 3rem;
+        font-weight: 400;
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    /* --- MAGNETIC CTA --- */
+    .magnetic-wrap {
+        display: inline-block;
+        position: relative;
+        z-index: 10;
+    }
+
+    .btn-magnetic {
+        background: var(--text-primary);
+        color: var(--bg-core);
+        padding: 1.25rem 3rem;
+        border-radius: 100px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s var(--ease-elastic), box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-magnetic:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    }
+
+    /* --- AUTHORITY TICKER --- */
+    .authority-block {
+        padding: 4rem 0;
+        border-bottom: 1px solid var(--border-subtle);
+        background: var(--bg-core);
+    }
+
+    .ticker-wrap {
+        overflow: hidden;
+        white-space: nowrap;
+        mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+    }
+
+    .ticker-item {
+        display: inline-block;
+        padding: 0 3rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-tertiary);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    /* --- CAPABILITY MATRIX (BENTO) --- */
+    .section-pad { padding: 10rem 0; }
+    
+    .section-header {
+        margin-bottom: 5rem;
+    }
+
+    .label-text {
+        font-size: 0.875rem;
+        color: var(--accent-glow);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .headline-lg {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 700;
+        line-height: 1.1;
+    }
+
+    .matrix-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 400px);
+        gap: 20px;
+    }
+
+    .matrix-card {
+        background: var(--glass);
+        border: 1px solid var(--border-subtle);
+        border-radius: 20px;
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 0.4s var(--ease-elastic);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .matrix-card:hover {
+        background: var(--border-subtle);
+        border-color: var(--border-active);
+        transform: translateY(-5px);
+    }
+
+    .matrix-card.span-2 { grid-column: span 2; }
+    .matrix-card.span-row-2 { grid-row: span 2; }
+
+    .card-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+    }
+
+    /* --- RESULTS ENGINE (DASHBOARD) --- */
+    .results-dashboard {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
+        border-radius: 24px;
+        padding: 4rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .graph-line {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        transition: stroke-dashoffset 2s ease-out;
+    }
+
+    .graph-line.active {
+        stroke-dashoffset: 0;
+    }
+
+    /* --- PROCESS TIMELINE (STICKY) --- */
+    .process-container {
+        position: relative;
+    }
+
+    .process-step {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4rem 0;
+        border-top: 1px solid var(--border-subtle);
+        opacity: 0.3;
+        transition: opacity 0.5s ease;
+    }
+
+    .process-step.active {
+        opacity: 1;
+    }
+
+    .step-number {
+        font-size: 4rem;
+        font-weight: 800;
+        color: var(--border-active);
+    }
+
+    /* --- FINAL CTA --- */
+    .final-cta {
+        text-align: center;
+        padding: 15rem 0;
+    }
+
+    /* --- ANIMATION UTILITIES --- */
+    .fade-up {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 1s var(--ease-smooth), transform 1s var(--ease-smooth);
+        will-change: opacity, transform;
+    }
+    
+    .fade-up.in-view {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .delay-100 { transition-delay: 0.1s; }
+    .delay-200 { transition-delay: 0.2s; }
+
+    /* --- QUOTES SECTION --- */
+    .quote-text {
+        font-size: clamp(1.5rem, 2vw, 2rem);
+        font-weight: 500;
+        line-height: 1.3;
+        margin-bottom: 2rem;
+        color: var(--text-primary);
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 1024px) {
+        .matrix-grid {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+        }
+        .matrix-card.span-2, .matrix-card.span-row-2 {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+        .quote-card {
+            grid-column: span 12 !important; margin-bottom: 3rem;
+        }
+    }
+
+    @keyframes breathe {
+        0% { transform: scale(1); opacity: 0.5; }
+        100% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    @keyframes float-blob {
+        0% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(20px, -20px) scale(1.1); }
+        100% { transform: translate(-20px, 20px) scale(0.9); }
+    }
+
+    @keyframes shine {
+        0% { background-position: 0% center; }
+        100% { background-position: 200% center; }
+    }
+</style>
 </head>
 <body>
 
@@ -71,168 +417,208 @@
         </div>
     </div>
 
-    <div class="pointer"></div>
-    <div class="pointer-dot"></div>
-
     <!-- ================== HEADER ================== -->
     <div id="header-placeholder"></div>
 
     <main>
-        <!-- ================== HERO SECTION ================== -->
-        <section id="hero">
-            <canvas id="particle-canvas"></canvas>
-            <div class="container fade-in">
-                <div class="hero-content">
-                    <div class="text-reveal">
-                        <h1><span>Building the <span class="highlight">Future</span> of Your Digital Presence</span></h1>
-                    </div>
-                    <p>We craft stunning websites and execute data-driven digital marketing strategies that launch your business into its next phase of growth.</p>
-                    <a href="contact.html" class="cta-button">Launch Your Project</a>
+        <!-- ================== 1. IMMERSIVE HERO ================== -->
+        <section id="hero-immersive">
+            <div class="hero-grid"></div>
+            <div class="hero-blob blob-1"></div>
+            <div class="hero-blob blob-2"></div>
+            <div class="hero-content">
+                <h1 class="hero-headline" id="hero-text">
+                    Invisible to<br>Invincible.
+                </h1>
+                <p class="hero-sub" id="hero-sub">
+                    We engineer digital dominance for brands that refuse to be second. 
+                    SEO, Performance, and Identity at the speed of code.
+                </p>
+                <div class="magnetic-wrap">
+                    <button class="btn-magnetic" onclick="window.location.href='contact.html'">
+                        Start the Ascent
+                    </button>
                 </div>
             </div>
         </section>
 
-        <!-- ================== SERVICES SECTION ================== -->
-        <section id="core-services">
-            <div class="container">
-                <div class="fade-in">
-                    <div class="text-reveal">
-                        <h2><span>Our Core Services</span></h2>
-                    </div>
-                    <p class="section-description">A complete suite of digital solutions designed to build your brand, engage your audience, and drive growth.</p>
-                </div>
-                <div class="services-grid stagger-children-fade">
-                    <div class="service-card">
-                        <h3>Website Designing</h3>
-                        <p>We build immersive digital experiences that are fast, intuitive, and engineered for growth.</p>
-                        <a href="services/website-designing.html" class="card-link">Learn More &rarr;</a>
-                    </div>
-                    <div class="service-card">
-                        <h3>Search Engine Optimization</h3>
-                        <p>Elevate your visibility, drive organic traffic, and secure a dominant position in search rankings.</p>
-                        <a href="services/search-engine-optimization.html" class="card-link">Learn More &rarr;</a>
-                    </div>
-                    <div class="service-card">
-                        <h3>Content Marketing</h3>
-                        <p>We engineer narratives that build authority, engage your audience, and drive measurable action.</p>
-                        <a href="services/content-marketing.html" class="card-link">Learn More &rarr;</a>
-                    </div>
-                    <div class="service-card">
-                        <h3>Social Media Optimization</h3>
-                        <p>Transform your social channels into powerful engines for brand growth and community building.</p>
-                        <a href="services/social-media-optimization.html" class="card-link">Learn More &rarr;</a>
-                    </div>
-                    <div class="service-card">
-                        <h3>Graphic Designing</h3>
-                        <p>Powerful brand identities and marketing materials that don't just capture attention—they capture imagination.</p>
-                        <a href="services/graphic-designing.html" class="card-link">Learn More &rarr;</a>
-                    </div>
-                    <div class="service-card">
-                        <h3>Email Marketing</h3>
-                        <p>Amplify your brand with targeted email campaigns that nurture loyalty and drive conversions.</p>
-                        <a href="services/email-marketing.html" class="card-link">Learn More &rarr;</a>
-                    </div>
+        <!-- ================== 2. AUTHORITY TICKER ================== -->
+        <div class="authority-block">
+            <div class="ticker-wrap">
+                <div class="ticker-content">
+                    <span class="ticker-item">GOOGLE PARTNER</span>
+                    <span class="ticker-item">META CERTIFIED</span>
+                    <span class="ticker-item">SEMRUSH AGENCY</span>
+                    <span class="ticker-item">HUBSPOT ELITE</span>
+                    <span class="ticker-item">SHOPIFY EXPERTS</span>
+                    <span class="ticker-item">GOOGLE PARTNER</span>
+                    <span class="ticker-item">META CERTIFIED</span>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- ================== WHY CHOOSE US SECTION ================== -->
-        <section id="why-choose-us">
-            <div class="container about-container">
-                <div class="about-image fade-in-left">
-                    <img src="https://webxrankings.com/wp-content/uploads/2025/06/working-job-career-casual-showing-SJZWF3N-1024x737.jpg" alt="Team collaborating on a project">
+        <!-- ================== 3. CAPABILITY MATRIX ================== -->
+        <section class="section-pad">
+            <div class="container-fluid">
+                <div class="section-header">
+                    <span class="label-text fade-up">System Architecture</span>
+                    <h2 class="headline-lg fade-up delay-100">Engineered for<br>Compound Growth.</h2>
                 </div>
-                <div class="about-content fade-in-right">
-                    <div class="text-reveal">
-                        <h2 class="text-left"><span>Why Choose Us?</span></h2>
+                
+                <div class="matrix-grid">
+                    <!-- SEO Module -->
+                    <div class="matrix-card span-row-2">
+                        <div>
+                            <div class="card-icon">🔍</div>
+                            <h3 class="fade-up">Search Dominance</h3>
+                            <p style="color: var(--text-secondary); margin-top: 1rem;">
+                                We don't just rank keywords; we monopolize search intent. Technical SEO, authority building, and semantic dominance.
+                            </p>
+                        </div>
+                        <a href="services/search-engine-optimization.html" style="color: var(--text-primary); text-decoration: none; margin-top: 2rem; display: block;">Explore Protocol &rarr;</a>
                     </div>
-                    <p>Choose us because we offer accurate, data-driven insights that help you understand and improve your website’s performance. Our expert team provides tailored analysis, actionable recommendations, and ongoing support to boost your visibility and digital growth.</p>
-                    <ul class="feature-list stagger-children-fade">
-                        <li>Performance Marketing</li>
-                        <li>Social Media Growth</li>
-                        <li>Content Marketing</li>
-                        <li>PPC & Paid Ads</li>
-                    </ul>
-                    <a href="contact.html" class="cta-button">Get a Free Consultation</a>
-                </div>
-            </div>
-        </section>
 
-        <!-- ================== HOW IT WORKS SECTION ================== -->
-        <section id="how-it-works">
-            <div class="container">
-                <div class="text-reveal">
-                    <h2><span>Simple Steps to Digital Success</span></h2>
-                </div>
-                <p class="fade-in section-description">Experience effortless digital progress with our proven strategies designed for real business growth.</p>
-                <div class="process-steps stagger-children-fade">
-                    <div class="process-step">
-                        <h3>01. Discovery & Consult</h3>
-                        <p>We start by understanding your goals and audience to build a custom strategy that aligns with your vision.</p>
-                    </div>
-                    <div class="process-step">
-                        <h3>02. Strategy & Planning</h3>
-                        <p>Our team crafts a detailed, data-driven plan to ensure every action is targeted and effective.</p>
-                    </div>
-                    <div class="process-step">
-                        <h3>03. Execution & Optimize</h3>
-                        <p>We launch your campaigns and continuously monitor performance, optimizing for the best possible results.</p>
-                    </div>
-                    <div class="process-step">
-                        <h3>04. Results & Growth</h3>
-                        <p>We deliver measurable growth, providing transparent reports that show your return on investment.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ================== CLIENTS SECTION ================== -->
-        <section id="clients">
-            <div class="container fade-in">
-                <div class="text-reveal">
-                    <h2 class="section-subheading-alt"><span>Trusted by Industry Leaders</span></h2>
-                </div>
-                <div class="clients-grid stagger-children-fade">
-                    <img src="https://webxrankings.com/wp-content/uploads/2025/06/Client-1.png" alt="Client 1 Logo">
-                    <img src="https://webxrankings.com/wp-content/uploads/2025/06/Client-3.png" alt="Client 3 Logo">
-                    <img src="https://webxrankings.com/wp-content/uploads/2025/06/Client-5.png" alt="Client 5 Logo">
-                    <img src="https://webxrankings.com/wp-content/uploads/2025/06/Client-4.png" alt="Client 4 Logo">
-                    <img src="https://webxrankings.com/wp-content/uploads/2025/06/Client-7.png" alt="Client 7 Logo">
-                    <img src="https://webxrankings.com/wp-content/uploads/2025/06/Client-8.png" alt="Client 8 Logo">
-                </div>
-            </div>
-        </section>
-
-        <!-- ================== TESTIMONIALS SECTION ================== -->
-        <section id="testimonials">
-            <div class="container">
-                <div class="fade-in">
-                    <div class="text-reveal">
-                        <h2><span>What Our Clients Say</span></h2>
-                    </div>
-                    <p class="section-description">Real success stories from businesses we’ve helped elevate.</p>
-                </div>
-                <div class="testimonial-grid stagger-children-fade">
-                    <div class="testimonial-card">
-                        <p class="quote">“TechAriv completely transformed our online presence! Their digital marketing strategies helped us double our revenue in just six months.”</p>
-                        <div class="author">
-                            <img src="https://webxrankings.com/wp-content/uploads/2025/06/Photo-13.jpg" alt="Emma Richard">
-                            <div>
-                                <strong>Emma Richard</strong>
-                                <span>CEO, Nexatech</span>
-                            </div>
+                    <!-- Performance Module -->
+                    <div class="matrix-card span-2">
+                        <div>
+                            <div class="card-icon">⚡</div>
+                            <h3 class="fade-up">Performance Marketing</h3>
+                            <p style="color: var(--text-secondary);">
+                                Algorithmic paid acquisition. We scale ROAS through precision targeting and creative iteration.
+                            </p>
                         </div>
                     </div>
-                    <div class="testimonial-card">
-                        <p class="quote">“We’ve worked with many agencies, but TechAriv stands out. Their data-driven approach and creative solutions gave us an edge over competitors.”</p>
-                        <div class="author">
-                            <img src="https://webxrankings.com/wp-content/uploads/2025/06/Photo-8.jpg" alt="David Mont">
-                            <div>
-                                <strong>David Mont</strong>
-                                <span>Marketing Director</span>
-                            </div>
+
+                    <!-- Branding Module -->
+                    <div class="matrix-card">
+                        <div class="card-icon">💎</div>
+                        <h3 class="fade-up">Identity Systems</h3>
+                        <p style="color: var(--text-secondary);">Visual languages that command premium perception.</p>
+                    </div>
+
+                    <!-- Content Module -->
+                    <div class="matrix-card">
+                        <div class="card-icon">✒️</div>
+                        <h3 class="fade-up">Narrative Engineering</h3>
+                        <p style="color: var(--text-secondary);">Content that converts traffic into belief.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================== 4. RESULTS ENGINE ================== -->
+        <section class="section-pad">
+            <div class="container-fluid">
+                <div class="section-header">
+                    <span class="label-text fade-up">Live Telemetry</span>
+                    <h2 class="headline-lg fade-up delay-100">Data is our<br>Love Language.</h2>
+                </div>
+
+                <div class="results-dashboard" id="dashboard-view">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 2rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 1rem;">
+                        <div>
+                            <span style="color: var(--text-secondary); font-size: 0.9rem;">TOTAL REVENUE GENERATED</span>
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--text-primary);">$42,890,000+</div>
+                        </div>
+                        <div>
+                            <span style="color: var(--text-secondary); font-size: 0.9rem;">AVG. ROI</span>
+                            <div style="font-size: 2rem; font-weight: 700; color: #10b981;">840%</div>
+                        </div>
+                        <div>
+                            <span style="color: var(--text-secondary); font-size: 0.9rem;">KEYWORDS RANKED</span>
+                            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-glow);">12,500+</div>
                         </div>
                     </div>
+                    
+                    <!-- SVG Graph -->
+                    <svg viewBox="0 0 1000 300" width="100%" height="100%" style="overflow: visible;">
+                        <defs>
+                            <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.2"/>
+                                <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <path class="graph-line" d="M0,250 C100,250 200,180 300,200 C400,220 500,100 600,120 C700,140 800,50 1000,20" 
+                              fill="none" stroke="#3b82f6" stroke-width="3" />
+                        <path class="graph-fill" d="M0,250 C100,250 200,180 300,200 C400,220 500,100 600,120 C700,140 800,50 1000,20 V300 H0 Z" 
+                              fill="url(#gradient)" opacity="0.5" />
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================== 5. PROCESS TIMELINE ================== -->
+        <section class="section-pad">
+            <div class="container-fluid">
+                <div class="section-header">
+                    <span class="label-text fade-up">The Algorithm</span>
+                    <h2 class="headline-lg fade-up delay-100">From Audit to<br>Automation.</h2>
+                </div>
+                
+                <div class="process-container">
+                    <div class="process-step active">
+                        <span class="step-number">01</span>
+                        <div>
+                            <h3 class="fade-up">Deep Audit & Discovery</h3>
+                            <p style="color: var(--text-secondary);">We dismantle your current stack to find the hidden friction.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <span class="step-number">02</span>
+                        <div>
+                            <h3 class="fade-up">Strategic Architecture</h3>
+                            <p style="color: var(--text-secondary);">Building the roadmap for technical and creative dominance.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <span class="step-number">03</span>
+                        <div>
+                            <h3 class="fade-up">Execution & Scale</h3>
+                            <p style="color: var(--text-secondary);">Deploying campaigns and optimizing based on real-time telemetry.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================== 5.5. VOICES (NEW) ================== -->
+        <section class="section-pad">
+            <div class="container-fluid">
+                <div class="section-header">
+                    <span class="label-text fade-up">Consensus</span>
+                    <h2 class="headline-lg fade-up delay-100">What the Market<br>Is Saying.</h2>
+                </div>
+                
+                <div class="grid-system">
+                    <div class="quote-card fade-up delay-200" style="grid-column: span 6;">
+                        <p class="quote-text">"TechAriv didn't just optimize our site; they fundamentally restructured our revenue model through digital channels."</p>
+                        <div class="quote-author">
+                            <span class="author-name">Alex V.</span>
+                            <span class="author-role">CTO, FinScale</span>
+                        </div>
+                    </div>
+                    <div class="quote-card fade-up delay-200" style="grid-column: span 6;">
+                        <p class="quote-text">"The level of engineering rigor they bring to marketing is unheard of. It's not magic, it's math."</p>
+                        <div class="quote-author">
+                            <span class="author-name">Sarah J.</span>
+                            <span class="author-role">VP Growth, Loom</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================== 6. FINAL CTA ================== -->
+        <section class="final-cta">
+            <div class="container-fluid">
+                <h2 class="headline-lg fade-up" style="margin-bottom: 2rem;">Ready to Ascend?</h2>
+                <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto 3rem;">
+                    Your competition is hoping you don't click this button.
+                </p>
+                <div class="magnetic-wrap">
+                    <button class="btn-magnetic" onclick="window.location.href='contact.html'">
+                        Initialize Growth
+                    </button>
                 </div>
             </div>
         </section>
@@ -245,6 +631,96 @@
     <a href="#" class="back-to-top-btn" aria-label="Back to top">↑</a>
 
     <script src="js/script.js"></script>
+    
+    <!-- INLINE SCRIPT FOR NEW ANIMATIONS -->
+    <script>
+        // --- 1. HERO REVEAL LOGIC ---
+        window.addEventListener('load', () => {
+            const headline = document.getElementById('hero-text');
+            const sub = document.getElementById('hero-sub');
+            
+            // Simple staggered reveal
+            setTimeout(() => {
+                headline.style.transition = 'all 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
+                headline.style.opacity = '1';
+                headline.style.transform = 'translateY(0)';
+            }, 300);
+
+            setTimeout(() => {
+                sub.style.transition = 'all 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
+                sub.style.opacity = '1';
+                sub.style.transform = 'translateY(0)';
+            }, 600);
+        });
+
+        // Magnetic Button Effect
+        const magneticBtns = document.querySelectorAll('.magnetic-btn');
+        magneticBtns.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0, 0)';
+            });
+        });
+
+        // --- 2. GRAPH ANIMATION ---
+        const graphObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.querySelector('.graph-line').classList.add('active');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const dashboard = document.getElementById('dashboard-view');
+        if(dashboard) graphObserver.observe(dashboard);
+
+        // --- 3. PROCESS STEP HIGHLIGHT ---
+        const steps = document.querySelectorAll('.process-step');
+        const stepObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    steps.forEach(s => s.classList.remove('active'));
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.6 });
+
+        steps.forEach(step => stepObserver.observe(step));
+
+        // --- 4. FADE UP OBSERVER ---
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+
+        // --- 5. HERO PARALLAX ---
+        const heroSection = document.getElementById('hero-immersive');
+        const heroContent = document.querySelector('.hero-content');
+        
+        heroSection.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+            
+            heroContent.style.transform = `translate(${-x}px, ${-y}px) rotateX(${y * 0.1}deg) rotateY(${x * 0.1}deg)`;
+        });
+
+        heroSection.addEventListener('mouseleave', () => {
+            heroContent.style.transform = 'translate(0, 0) rotateX(0) rotateY(0)';
+        });
+    </script>
 
 </body>
 </html>
