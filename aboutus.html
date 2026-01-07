@@ -27,6 +27,782 @@
 
   gtag('config', 'G-HBXHFW9LXR');
 </script>
+<style>
+    :root {
+        --primary-color: #0387c4;
+        --primary-light: rgba(3, 135, 196, 0.08);
+        --text-dark: #1a1a1a;
+        --text-gray: #555;
+        --bg-white: #ffffff;
+        --shadow-soft: 0 15px 35px rgba(0,0,0,0.08);
+    }
+
+    .about-modern-hero {
+        padding: 2rem 0;
+        background-color: var(--bg-white);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        min-height: 85vh;
+    }
+
+    .hero-split {
+        display: flex;
+        align-items: center;
+        gap: 5rem;
+        position: relative;
+    }
+
+    /* Left Visual */
+    .hero-visual {
+        flex: 1;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        animation: slideInLeft 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    .visual-circle {
+        position: absolute;
+        width: 550px;
+        height: 550px;
+        background-color: var(--primary-light);
+        border-radius: 50%;
+        z-index: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .hero-person {
+        position: relative;
+        z-index: 1;
+        max-width: 100%;
+        height: auto;
+        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+    }
+
+    .float-card {
+        position: absolute;
+        background: white;
+        padding: 12px 20px;
+        border-radius: 15px;
+        box-shadow: var(--shadow-soft);
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        animation: float 4s ease-in-out infinite;
+        font-weight: 700;
+        color: var(--text-dark);
+        font-size: 0.95rem;
+    }
+
+    .float-card i { color: var(--primary-color); font-size: 1.2rem; }
+    .card-engagement { top: 15%; left: 0; }
+    .card-sales { bottom: 20%; right: -20px; animation-delay: 1.5s; }
+    .card-analytics { bottom: 10%; left: 10%; animation-delay: 0.8s; padding: 10px 15px; }
+
+    .chart-mini { display: flex; align-items: flex-end; gap: 3px; height: 20px; margin-left: 5px; }
+    .chart-mini .bar { width: 4px; background: #ddd; border-radius: 2px; }
+    .chart-mini .bar.fill { background: #00AB55; }
+
+    /* Right Content */
+    .hero-content {
+        flex: 1;
+        opacity: 0;
+        animation: slideInRight 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s;
+    }
+
+    .pill-badge {
+        display: inline-block;
+        background-color: var(--primary-light);
+        color: var(--primary-color);
+        padding: 0.6rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
+        letter-spacing: 0.5px;
+    }
+
+    .hero-heading {
+        font-size: clamp(2.5rem, 4vw, 3.5rem);
+        font-weight: 800;
+        color: var(--text-dark);
+        line-height: 1.15;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-desc {
+        font-size: 1.1rem;
+        color: var(--text-gray);
+        margin-bottom: 3rem;
+        line-height: 1.7;
+        max-width: 90%;
+    }
+
+    .feature-list { display: flex; flex-direction: column; gap: 1.2rem; }
+
+    .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.2rem 1.5rem;
+        border-radius: 16px;
+        transition: all 0.3s ease;
+        background: transparent;
+        border: 1px solid transparent;
+    }
+
+    .feature-item:hover {
+        background: white;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        transform: translateX(10px);
+    }
+
+    .feature-item.highlight {
+        background-color: var(--primary-light);
+        border: 1px solid rgba(3, 135, 196, 0.1);
+    }
+
+    .feature-item.highlight:hover {
+        background-color: var(--primary-light); /* Keep highlight on hover */
+        box-shadow: 0 10px 25px rgba(3, 135, 196, 0.15);
+    }
+
+    .icon-check {
+        width: 45px;
+        height: 45px;
+        background-color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-color);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        font-size: 1.1rem;
+        flex-shrink: 0;
+    }
+    
+    .feature-item.highlight .icon-check {
+        background-color: var(--primary-color);
+        color: white;
+    }
+
+    .feature-text h4 { margin: 0 0 0.2rem 0; font-size: 1.1rem; font-weight: 700; color: var(--text-dark); }
+    .feature-text p { margin: 0; font-size: 0.9rem; color: var(--text-gray); }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-12px); }
+    }
+
+    @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-60px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(60px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    @media (max-width: 992px) {
+        .hero-split { flex-direction: column; text-align: center; gap: 3rem; }
+        .hero-visual { width: 100%; margin-bottom: 2rem; }
+        .visual-circle { width: 350px; height: 350px; }
+        .hero-desc { margin-left: auto; margin-right: auto; }
+        .feature-item { text-align: left; }
+        .card-sales { right: 0; }
+    }
+
+    /* --- PRINCIPLES SECTION (New) --- */
+    #principles-section {
+        --primary-color: #0387c4;
+        --background-color: #0B1120; /* Dark premium background */
+        --card-bg: rgba(255, 255, 255, 0.03);
+        --text-primary: #ffffff;
+        --text-muted: #94a3b8;
+
+        background-color: var(--background-color);
+        padding: 2.5rem 5%;
+        position: relative;
+        overflow: hidden;
+        color: var(--text-primary);
+    }
+
+    #principles-section .section-header {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 5rem;
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        filter: blur(10px);
+        transition: all 0.8s ease;
+    }
+
+    #principles-section .section-header.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+
+    #principles-section .section-title {
+        font-size: clamp(2.2rem, 5vw, 3rem);
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: var(--text-primary);
+    }
+
+    #principles-section .section-subtitle {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+    .principles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2.5rem;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    .principle-card {
+        background: var(--card-bg);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 24px;
+        padding: 3.5rem 2.5rem;
+        text-align: center;
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+        filter: blur(5px);
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+    }
+
+    .principle-card.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+
+    .principle-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        border-color: rgba(3, 135, 196, 0.4);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(3, 135, 196, 0.15);
+    }
+
+    .principle-icon-box {
+        width: 80px;
+        height: 80px;
+        background: rgba(3, 135, 196, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+        color: var(--primary-color);
+        transition: all 0.35s ease;
+        position: relative;
+    }
+
+    .principle-card:hover .principle-icon-box {
+        background: var(--primary-color);
+        color: #fff;
+        box-shadow: 0 0 25px rgba(3, 135, 196, 0.6);
+        transform: scale(1.1);
+    }
+
+    .principle-card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1.2rem;
+        color: var(--text-primary);
+    }
+
+    .principle-card p {
+        color: var(--text-muted);
+        line-height: 1.7;
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    /* Staggered Animation Delays */
+    .principle-card:nth-child(1) { transition-delay: 0.1s; }
+    .principle-card:nth-child(2) { transition-delay: 0.2s; }
+    .principle-card:nth-child(3) { transition-delay: 0.3s; }
+
+    @media (max-width: 768px) {
+        #principles-section { padding: 2rem 5%; }
+        .principles-grid { grid-template-columns: 1fr; }
+    }
+
+    /* --- PROCESS SECTION --- */
+    #process-section {
+        padding: 2.5rem 5%;
+        background: #f8f9fa;
+        position: relative;
+        overflow: hidden;
+        color: var(--text-dark);
+    }
+
+    /* Tech Grid Background */
+    #process-section::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-image: 
+            linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+        opacity: 0.3;
+        z-index: 0;
+    }
+
+    .process-header {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 4rem;
+        position: relative;
+        z-index: 1;
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        filter: blur(10px);
+        transition: all 0.8s ease;
+    }
+
+    .process-header.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+
+    .process-badge {
+        display: inline-block;
+        padding: 0.5rem 1.5rem;
+        background: rgba(255, 140, 0, 0.15);
+        color: #FF8C00;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        margin-bottom: 1rem;
+        border: 1px solid rgba(255, 140, 0, 0.5);
+        box-shadow: 0 0 20px rgba(255, 140, 0, 0.2);
+        text-transform: uppercase;
+    }
+
+    .process-title {
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        font-weight: 800;
+        color: var(--text-dark);
+        margin-bottom: 1rem;
+        line-height: 1.2;
+        text-shadow: none;
+    }
+
+    .process-subtitle {
+        color: var(--text-gray);
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+    .process-steps-wrapper {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 0;
+        z-index: 1;
+    }
+
+    /* Connector Line */
+    .process-connector {
+        position: absolute;
+        top: 50px;
+        left: 16%;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, #FF8C00, transparent);
+        z-index: 0;
+        opacity: 0.6;
+        transition: width 1.5s ease-out 0.5s;
+        box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
+    }
+
+    .process-steps-wrapper.visible .process-connector {
+        width: 68%;
+    }
+
+    .process-steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .step-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 2.5rem 1.5rem;
+        border-radius: 24px;
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        backdrop-filter: blur(10px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        transform: translateY(40px) scale(0.9);
+        filter: blur(5px);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .step-card.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+
+    .step-card:hover {
+        transform: translateY(-15px);
+        background: #ffffff;
+        border-color: rgba(255, 140, 0, 0.3);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1), 0 0 20px rgba(255, 140, 0, 0.1);
+    }
+
+    .step-icon-container {
+        width: 100px;
+        height: 100px;
+        background: rgba(255, 140, 0, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        position: relative;
+        transition: all 0.4s ease;
+        border: 1px solid rgba(255, 140, 0, 0.2);
+        box-shadow: 0 0 20px rgba(255, 140, 0, 0.1);
+    }
+
+    .step-icon {
+        font-size: 2rem;
+        color: #FF8C00;
+        transition: color 0.4s ease;
+    }
+
+    .step-card:hover .step-icon-container {
+        background: #FF8C00;
+        box-shadow: 0 0 30px rgba(255, 140, 0, 0.6);
+        transform: scale(1.1) rotate(5deg);
+        border-color: transparent;
+    }
+
+    .step-card:hover .step-icon {
+        color: white;
+    }
+
+    .step-number {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        width: 30px;
+        height: 30px;
+        background: #0387c4;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.8rem;
+        border: 2px solid #ffffff;
+        box-shadow: 0 0 10px rgba(3, 135, 196, 0.5);
+    }
+
+    .step-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 0.8rem;
+    }
+
+    .step-desc {
+        color: var(--text-gray);
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* Stagger Delays */
+    .step-card:nth-child(1) { transition-delay: 0.2s; }
+    .step-card:nth-child(2) { transition-delay: 0.4s; }
+    .step-card:nth-child(3) { transition-delay: 0.6s; }
+
+    @media (max-width: 900px) {
+        .process-steps { grid-template-columns: 1fr; gap: 1.5rem; }
+        .process-connector { display: none; }
+        .step-card { padding: 2rem; }
+    }
+
+    /* --- TESTIMONIALS SECTION --- */
+    #testimonials-section {
+        padding: 6rem 5%;
+        background-color: var(--bg-white);
+        position: relative;
+        overflow: hidden;
+        /* Unique: Dot Pattern Background */
+        background-image: radial-gradient(rgba(255, 140, 0, 0.15) 1.5px, transparent 1.5px);
+        background-size: 30px 30px;
+    }
+
+    /* Fade out dots at edges */
+    #testimonials-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at center, transparent 0%, var(--bg-white) 80%);
+        pointer-events: none;
+    }
+
+    .testimonial-header {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 4rem;
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        filter: blur(10px);
+        transition: all 0.8s ease;
+    }
+
+    .testimonial-header.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+
+    .testimonial-badge {
+        display: inline-block;
+        padding: 0.5rem 1.5rem;
+        background: rgba(255, 140, 0, 0.1);
+        color: #FF8C00;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.8rem;
+        letter-spacing: 1.5px;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+    }
+
+    .testimonial-title {
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        font-weight: 800;
+        color: var(--text-dark);
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+
+    .testimonial-subtitle {
+        color: var(--text-gray);
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2.5rem;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    .testimonial-card {
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        border: 1px solid rgba(0,0,0,0.03);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        transform: translateY(40px) scale(0.9);
+        filter: blur(5px);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .testimonial-card.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-10px) scale(1.01);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+        border-color: rgba(255, 140, 0, 0.2);
+    }
+
+    .quote-icon {
+        font-size: 1.5rem;
+        color: rgba(255, 140, 0, 0.3);
+        margin-bottom: 1.5rem;
+        transition: color 0.3s ease;
+    }
+
+    .testimonial-card:hover .quote-icon {
+        color: #FF8C00;
+    }
+
+    .testimonial-text {
+        font-size: 1.05rem;
+        color: var(--text-dark);
+        line-height: 1.7;
+        margin-bottom: 2rem;
+        flex-grow: 1;
+        font-style: italic;
+    }
+
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: auto;
+    }
+
+    .author-img {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #fff;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .author-info h4 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin: 0;
+    }
+
+    .author-role {
+        font-size: 0.85rem;
+        color: var(--text-gray);
+    }
+
+    .star-rating {
+        margin-left: auto;
+        color: #FFC107;
+        font-size: 0.8rem;
+        display: flex;
+        gap: 2px;
+    }
+    
+
+    /* Stagger Delays */
+    .testimonial-card:nth-child(1) { transition-delay: 0.1s; }
+    .testimonial-card:nth-child(2) { transition-delay: 0.2s; }
+    .testimonial-card:nth-child(3) { transition-delay: 0.3s; }
+
+    @media (max-width: 768px) {
+        .testimonial-grid { grid-template-columns: 1fr; }
+        .star-rating { display: none; }
+    }
+
+    /* --- CTA SECTION --- */
+    #cta-section {
+        padding: 0 5% 6rem; /* Bottom padding only, flows from testimonials */
+        background-color: var(--bg-white);
+        position: relative;
+    }
+
+    .cta-container {
+        background: linear-gradient(135deg, var(--primary-color) 0%, #026a9c 100%);
+        border-radius: 30px;
+        padding: 5rem 2rem;
+        text-align: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(3, 135, 196, 0.25);
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        filter: blur(10px);
+        transition: all 0.8s ease;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .cta-container.visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+
+    /* Decorative circles */
+    .cta-circle {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        pointer-events: none;
+    }
+    .cta-circle-1 { width: 400px; height: 400px; top: -150px; left: -100px; }
+    .cta-circle-2 { width: 300px; height: 300px; bottom: -100px; right: -50px; }
+
+    .cta-title {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .cta-desc {
+        font-size: 1.15rem;
+        opacity: 0.95;
+        max-width: 650px;
+        margin: 0 auto 3rem;
+        line-height: 1.8;
+        position: relative;
+        z-index: 1;
+    }
+
+    .cta-btn {
+        display: inline-block;
+        background: white;
+        color: var(--primary-color);
+        padding: 1.2rem 3rem;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        position: relative;
+        z-index: 1;
+    }
+
+    .cta-btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        background: #f8f9fa;
+    }
+</style>
 </head>
 <body>
 
@@ -34,71 +810,102 @@
     <div id="header-placeholder"></div>
 
     <main>
-        <!-- ================== ABOUT US HERO ================== -->
-        <section id="about-hero" class="text-center">
-            <div class="container fade-in">
-                <div class="text-reveal">
-                    <h1><span>About Us</span></h1>
-                </div>
-                <p>Our Story, Our Mission, Our Team</p>
-            </div>
-        </section>
+        <!-- ================== MODERN ABOUT HERO ================== -->
+        <section class="about-modern-hero">
+            <div class="container hero-split">
+                <!-- Left Visual -->
+                <div class="hero-visual">
+                    <div class="visual-circle"></div>
+                    <!-- Professional pointing image -->
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop" alt="TechAriv Expert" class="hero-person">
+                    
+                    <!-- Floating Stats -->
+                    <div class="float-card card-engagement">
+                        <i class="fa-solid fa-thumbs-up"></i>
+                        <span>120% Engagement</span>
+                    </div>
+                    
+                    <div class="float-card card-sales">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                        <span>85% Sales Growth</span>
+                    </div>
 
-        <!-- ================== WHO WE ARE SECTION ================== -->
-        <section id="who-we-are">
-            <div class="container about-container">
-                <div class="about-image fade-in-left">
-                    <img src="assets/images/Client 1.jpg" height="737px" width="1024px" alt="Team collaborating on a project">
-                    <div class="experience-badge">
-                        <div class="counter" data-target="15">0</div>
-                        <p>Years of Experience</p>
-                    </div>
-                </div>
-                <div class="about-content fade-in-right">
-                    <div class="text-reveal">
-                        <h2 class="text-left"><span>Your Trusted Digital Partner</span></h2>
-                    </div>
-                    <p>TechAriv is a strategy-first digital marketing company that presents you with a spectrum of data-driven web marketing services. Our seasoned experts craft growth-oriented online marketing campaigns helping businesses across industries augment their ROI.</p>
-                    <p>Get to know the passionate team behind the strategies, the values that guide us, and the mission that fuels our growth.</p>
-                    <div class="mission-vision-grid">
-                        <div class="mission-card">
-                            <h4>Our Mission</h4>
-                            <p>To empower businesses with innovative strategies and performance-driven campaigns that accelerate growth and secure a competitive edge in the digital marketplace.</p>
-                        </div>
-                        <div class="vision-card">
-                            <h4>Our Vision</h4>
-                            <p>To be the leading digital partner for brands worldwide, recognized for our integrity, creativity, and the tangible results we deliver.</p>
+                    <div class="float-card card-analytics">
+                        <div class="chart-mini">
+                            <div class="bar fill" style="height: 40%"></div>
+                            <div class="bar fill" style="height: 70%"></div>
+                            <div class="bar fill" style="height: 50%"></div>
+                            <div class="bar fill" style="height: 100%"></div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Right Content -->
+                <div class="hero-content">
+                    <span class="pill-badge">ABOUT TECHARIV</span>
+                    <h1 class="hero-heading">Digital Marketing That Matters To Your Success</h1>
+                    <p class="hero-desc">Our marketing efforts are to achieve your business goals no matter what. We combine data-driven strategies with creative excellence to deliver results that scale.</p>
+                    
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <div class="icon-check"><i class="fa-solid fa-check"></i></div>
+                            <div class="feature-text">
+                                <h4>Digital Era Experts</h4>
+                                <p>Navigating the digital landscape with proven expertise.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item highlight">
+                            <div class="icon-check"><i class="fa-solid fa-check"></i></div>
+                            <div class="feature-text">
+                                <h4>Right Size</h4>
+                                <p>Solutions tailored perfectly to your business scale.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="icon-check"><i class="fa-solid fa-headset"></i></div>
+                            <div class="feature-text">
+                                <h4>Excellent Support</h4>
+                                <p>Dedicated team available whenever you need us.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- ================== OUR CORE VALUES ================== -->
-        <section id="core-values" class="bg-medium">
+        <!-- ================== THE PRINCIPLES THAT DRIVE US ================== -->
+        <section id="principles-section">
             <div class="container">
-                <div class="text-reveal text-center">
-                    <h2><span>The Principles That Drive Us</span></h2>
+                <div class="section-header">
+                    <h2 class="section-title">The Principles That Drive Us</h2>
+                    <p class="section-subtitle">Our values are not just words on a page; they are the framework for every decision we make and the foundation of every client partnership.</p>
                 </div>
-                <p class="fade-in section-description">Our values are not just words on a page; they are the framework for every decision we make and the foundation of every client partnership.</p>
-                <div class="values-grid stagger-children-fade">
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <img src="https://webxrankings.com/wp-content/uploads/2025/06/Icon-2.png" alt="Innovation Icon">
+                
+                <div class="principles-grid">
+                    <!-- Card 1 -->
+                    <div class="principle-card">
+                        <div class="principle-icon-box">
+                            <i class="fa-solid fa-lightbulb"></i>
                         </div>
                         <h3>Innovation & Integrity</h3>
                         <p>We blend creative strategies with unwavering integrity, ensuring every move is not only effective but also transparent and ethical.</p>
                     </div>
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <img src="https://webxrankings.com/wp-content/uploads/2025/06/icon-1.png" alt="Partnership Icon">
+                    
+                    <!-- Card 2 -->
+                    <div class="principle-card">
+                        <div class="principle-icon-box">
+                            <i class="fa-solid fa-handshake"></i>
                         </div>
                         <h3>Client-Centric Partnership</h3>
                         <p>Your success is our success. We function as an extension of your team, collaborating closely to achieve shared goals and celebrate mutual victories.</p>
                     </div>
-                    <div class="value-card">
-                        <div class="value-icon">
-                            <img src="https://webxrankings.com/wp-content/uploads/2025/06/Icon-3.png" alt="Results Icon">
+                    
+                    <!-- Card 3 -->
+                    <div class="principle-card">
+                        <div class="principle-icon-box">
+                            <i class="fa-solid fa-chart-line"></i>
                         </div>
                         <h3>Data-Driven Results</h3>
                         <p>We don't guess; we measure. Our strategies are built on a foundation of data, ensuring every decision is optimized for maximum impact and ROI.</p>
@@ -107,52 +914,125 @@
             </div>
         </section>
 
-        <!-- ================== OUR JOURNEY/TIMELINE ================== -->
-        <section id="our-journey">
+        <!-- ================== OUR PROCESS SECTION ================== -->
+        <section id="process-section">
             <div class="container">
-                <div class="text-reveal">
-                    <h2><span>Our Journey of Growth</span></h2>
+                <div class="process-header">
+                    <span class="process-badge">OUR PROCESS</span>
+                    <h2 class="process-title">Easy Steps To Get Your Solution</h2>
+                    <p class="process-subtitle">We've simplified our workflow to ensure transparency, speed, and exceptional results for every project we undertake.</p>
                 </div>
-                <p class="fade-in section-description">From a bold idea to a leading digital agency, our journey has been one of constant innovation and commitment to excellence.</p>
-                <div class="timeline">
-                    <div class="timeline-item fade-in-right">
-                        <div class="timeline-content">
-                            <h3>2015 - The Spark</h3>
-                            <p>TechAriv was founded with the goal of bridging the gap between businesses and effective digital strategies.</p>
+
+                <div class="process-steps-wrapper">
+                    <div class="process-connector"></div>
+                    <div class="process-steps">
+                        <!-- Step 1 -->
+                        <div class="step-card">
+                            <div class="step-icon-container">
+                                <div class="step-number">1</div>
+                                <i class="fa-solid fa-calendar-check step-icon"></i>
+                            </div>
+                            <h3 class="step-title">Book A Service</h3>
+                            <p class="step-desc">Choose the service that fits your needs and schedule a kickoff meeting with our experts.</p>
                         </div>
-                    </div>
-                    <div class="timeline-item fade-in-left">
-                        <div class="timeline-content">
-                            <h3>2018 - First 100 Clients</h3>
-                            <p>We celebrated a major milestone, having helped over 100 businesses achieve significant digital growth.</p>
+
+                        <!-- Step 2 -->
+                        <div class="step-card">
+                            <div class="step-icon-container">
+                                <div class="step-number">2</div>
+                                <i class="fa-solid fa-comments step-icon"></i>
+                            </div>
+                            <h3 class="step-title">Start Consultation</h3>
+                            <p class="step-desc">We dive deep into your goals, creating a tailored strategy to maximize your digital impact.</p>
                         </div>
-                    </div>
-                    <div class="timeline-item fade-in-right">
-                        <div class="timeline-content">
-                            <h3>2021 - Expanding Services</h3>
-                            <p>Expanded our service offerings to include advanced analytics, AI-driven marketing, and comprehensive branding solutions.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item fade-in-left">
-                        <div class="timeline-content">
-                            <h3>Today - Future Forward</h3>
-                            <p>We continue to push the boundaries of digital innovation, partnering with leading brands to shape the future.</p>
+
+                        <!-- Step 3 -->
+                        <div class="step-card">
+                            <div class="step-icon-container">
+                                <div class="step-number">3</div>
+                                <i class="fa-solid fa-chart-line step-icon"></i>
+                            </div>
+                            <h3 class="step-title">Check Your Growth</h3>
+                            <p class="step-desc">Watch your business scale with real-time analytics and measurable performance improvements.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ================== FINAL CTA ================== -->
-        <section id="contact" class="fade-in">
+        <!-- ================== TESTIMONIALS SECTION ================== -->
+        <section id="testimonials-section">
             <div class="container">
-                <h2>Join Us on the Journey to Success</h2>
-                <p class="cta-description">Ready to write your own success story? Let's partner to take your brand to the next level.</p>
-                <div class="text-center">
-                    <a href="/contact.html" class="cta-button">Let's Talk Strategy</a>
+                <div class="testimonial-header">
+                    <span class="testimonial-badge">TESTIMONIALS</span>
+                    <h2 class="testimonial-title">What Our Customers Say About Us</h2>
+                    <p class="testimonial-subtitle">Trusted by fast-growing companies to deliver results that matter. Here is what they have to say about our partnership.</p>
+                </div>
+
+                <div class="testimonial-grid">
+                    <!-- Card 1 -->
+                    <div class="testimonial-card">
+                        <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                        <p class="testimonial-text">"TechAriv transformed our digital presence. Their data-driven approach helped us double our leads in just three months. The team is professional, responsive, and truly cares about our success."</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Sarah Johnson" class="author-img">
+                            <div class="author-info">
+                                <h4>Sarah Johnson</h4>
+                                <span class="author-role">CMO at GrowthScale</span>
+                            </div>
+                            <div class="star-rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="testimonial-card">
+                        <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                        <p class="testimonial-text">"The level of creativity and technical expertise they bring to the table is unmatched. They didn't just build a website; they built a comprehensive brand experience that our customers love."</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Michael Chen" class="author-img">
+                            <div class="author-info">
+                                <h4>Michael Chen</h4>
+                                <span class="author-role">Founder of NexTech</span>
+                            </div>
+                            <div class="star-rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="testimonial-card">
+                        <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                        <p class="testimonial-text">"Working with TechAriv feels like having an in-house marketing team. They are proactive, transparent, and always looking for ways to optimize our campaigns for better ROI."</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" alt="Emily Davis" class="author-img">
+                            <div class="author-info">
+                                <h4>Emily Davis</h4>
+                                <span class="author-role">Director at CreativeFlow</span>
+                            </div>
+                            <div class="star-rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- ================== CTA SECTION ================== -->
+        <section id="cta-section">
+            <div class="container">
+                <div class="cta-container">
+                    <div class="cta-circle cta-circle-1"></div>
+                    <div class="cta-circle cta-circle-2"></div>
+                    
+                    <h2 class="cta-title">Ready To Scale Your Business?</h2>
+                    <p class="cta-desc">Join the hundreds of companies that trust TechAriv to drive growth, innovation, and digital success. Let's build something amazing together.</p>
+                    <a href="/contact" class="cta-btn">Get Started Today</a>
+                </div>
+            </div>
+        </section>
+      
     </main>
 
     <!-- ================== FOOTER ================== -->
@@ -162,6 +1042,23 @@
     <a href="#" class="back-to-top-btn" aria-label="Back to top">↑</a>
 
     <script src="js/script.js"></script>
+    <script>
+        // Intersection Observer for Principles Section
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            const elements = document.querySelectorAll('#principles-section .section-header, .principle-card, .process-header, .process-steps-wrapper, .step-card, .testimonial-header, .testimonial-card, .cta-container');
+            elements.forEach(el => observer.observe(el));
+        });
+    </script>
 
 </body>
 </html>
