@@ -1,11 +1,335 @@
-<footer class="main-footer">
-    <div class="container">
-        <p>&copy; 2024 TechAriv. All Rights Reserved. | A US-Based Digital Agency</p>
-        <p>Innovating for a Digital Tomorrow.</p>
-        <div class="social-media">
-            <a href="https://x.com/TechAriv" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-            <a href="https://www.facebook.com/techariv" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.instagram.com/techariv/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+<style>
+    :root {
+        --footer-bg-dark: #0B1120;
+        --footer-bg-card: #151E32;
+        --primary-blue: #3FD1EC;
+        --accent-orange: #FF8C00;
+        --text-muted: #B0B8C4;
+        --text-white: #FFFFFF;
+    }
+
+    .new-footer {
+        background: linear-gradient(180deg, var(--footer-bg-dark) 0%, #0f172a 100%);
+        color: var(--text-muted);
+        font-family: 'Poppins', sans-serif;
+        padding-top: 3rem;
+        padding-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
+        font-size: 0.95rem;
+    }
+
+    .footer-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 5%;
+    }
+
+    .footer-top {
+        display: grid;
+        grid-template-columns: 1.3fr 0.8fr 0.8fr 1.3fr;
+        gap: 2.5rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Column 1: Company Info Card */
+    .company-card {
+        background-color: var(--footer-bg-card);
+        padding: 2rem;
+        border-radius: 16px;
+        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-logo {
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-white);
+        text-decoration: none;
+    }
+    
+    .footer-logo span { color: var(--primary-blue); }
+
+    .contact-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.2rem;
+        line-height: 1.5;
+    }
+
+    .contact-item i {
+        color: var(--primary-blue);
+        margin-top: 4px;
+    }
+
+    /* Columns 2 & 3: Links */
+    .footer-heading {
+        color: var(--text-white);
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        margin-top: 0;
+    }
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-links li {
+        margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+        color: var(--text-muted);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .footer-links a i {
+        font-size: 0.8rem;
+        transition: transform 0.3s ease;
+    }
+
+    .footer-links a:hover {
+        color: var(--accent-orange);
+        transform: translateX(5px);
+    }
+
+    /* Column 4: Newsletter */
+    .newsletter-text {
+        margin-bottom: 1.5rem;
+    }
+
+    .newsletter-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .newsletter-input {
+        padding: 14px 20px;
+        border-radius: 50px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.05);
+        color: white;
+        outline: none;
+        transition: border-color 0.3s;
+        font-family: inherit;
+    }
+    
+    .newsletter-input:focus {
+        border-color: var(--primary-blue);
+    }
+
+    .subscribe-btn {
+        background-color: var(--primary-blue);
+        color: white;
+        border: none;
+        padding: 14px 24px;
+        border-radius: 50px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+    }
+
+    .subscribe-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(63, 209, 236, 0.3);
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .social-icon {
+        width: 42px;
+        height: 42px;
+        background-color: var(--accent-orange);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 1.1rem;
+    }
+
+    .social-icon:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
+    }
+
+    /* Bottom Bar */
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 2rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .footer-bottom-links a {
+        color: var(--text-muted);
+        text-decoration: none;
+        margin-left: 2rem;
+        transition: color 0.3s;
+    }
+
+    .footer-bottom-links a:hover {
+        color: var(--accent-orange);
+    }
+
+    /* WhatsApp Float */
+    .whatsapp-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background-color: #25D366;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        z-index: 9999;
+        text-decoration: none;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+        70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    @media (max-width: 1024px) {
+        .footer-top {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .footer-bottom {
+            flex-direction: column;
+            text-align: center;
+        }
+        .footer-bottom-links a {
+            margin: 0 1rem;
+        }
+        .company-card {
+            padding: 1.5rem;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .footer-top {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<footer class="new-footer">
+    <div class="footer-container">
+        <div class="footer-top">
+            <!-- Column 1: Company Info -->
+            <div class="company-card">
+                <a href="/index.html" class="footer-logo">Tech<span>Ariv</span></a>
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>123 Tech Avenue, Silicon Valley, CA 94043, USA</span>
+                    </li>
+                    <li class="contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="mailto:info@techariv.com" style="color: inherit; text-decoration: none;">info@techariv.com</a>
+                    </li>
+                    <li class="contact-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <a href="tel:+15551234567" style="color: inherit; text-decoration: none; display: block;">+1 (555) 123-4567</a>
+                            <a href="tel:+919876543210" style="color: inherit; text-decoration: none; display: block;">+91 98765 43210</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Column 2: Other Pages -->
+            <div class="footer-col">
+                <h3 class="footer-heading">Other Pages</h3>
+                <ul class="footer-links">
+                    <li><a href="/index.html"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+                    <li><a href="/aboutus.html"><i class="fa-solid fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="/more/case-study.html"><i class="fa-solid fa-chevron-right"></i> Case Study</a></li>
+                    <li><a href="/contact.html"><i class="fa-solid fa-chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Pricing -->
+            <div class="footer-col">
+                <h3 class="footer-heading">Pricing</h3>
+                <ul class="footer-links">
+                    <li><a href="/pricing/gmb-pricing.html"><i class="fa-solid fa-chevron-right"></i> GMB Package</a></li>
+                    <li><a href="/pricing/ppc-pricing.html"><i class="fa-solid fa-chevron-right"></i> PPC Pricing</a></li>
+                    <li><a href="/pricing/smo-pricing.html"><i class="fa-solid fa-chevron-right"></i> SMO Pricing</a></li>
+                    <li><a href="/pricing/one-time-optimization.html"><i class="fa-solid fa-chevron-right"></i> Performance Marketing</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Newsletter -->
+            <div class="footer-col">
+                <h3 class="footer-heading">Newsletter</h3>
+                <p class="newsletter-text">Get the latest news & updates</p>
+                <form class="newsletter-form" action="#" method="POST">
+                    <input type="email" class="newsletter-input" placeholder="Your Email Address" required>
+                    <button type="submit" class="subscribe-btn">SUBSCRIBE</button>
+                </form>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/techariv" target="_blank" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://x.com/TechAriv" target="_blank" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/techariv/" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="footer-bottom">
+            <div class="footer-brand">TechAriv</div>
+            <div class="copyright">Copyright &copy; 2026 All rights reserved.</div>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
         </div>
     </div>
+    
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 </footer>
