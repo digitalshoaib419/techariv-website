@@ -27,6 +27,157 @@
 
   gtag('config', 'G-HBXHFW9LXR');
 </script>
+<style>
+    /* --- THEME OVERRIDE --- */
+    :root {
+        --primary-color: #0387c4fd;
+        --accent-gradient: linear-gradient(135deg, #FFB700, #FF8C00);
+        --cta-gradient: linear-gradient(90deg, #FF8C00, #FF5500);
+        --text-white: #ffffff;
+        --text-light: #f4f4f4;
+    }
+
+    body {
+        background-color: var(--primary-color) !important;
+        color: var(--text-white) !important;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    h2, h3, h4, p, li {
+        color: var(--text-white);
+    }
+
+    .section-header-centered h2, 
+    .pricing-container h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .section-description, 
+    .pricing-intro {
+        color: var(--text-light) !important;
+        max-width: 800px;
+        margin: 0 auto 3rem;
+        text-align: center;
+        line-height: 1.6;
+    }
+
+    .service-card, 
+    .pricing-card {
+        background: linear-gradient(145deg, #001524, #002b4d) !important;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 2rem;
+        transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .service-card:hover, 
+    .pricing-card:hover {
+        transform: translateY(-15px) scale(1.02);
+        background: linear-gradient(145deg, #002b4d, #001524) !important;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 25px rgba(255, 183, 0, 0.3);
+        border-color: rgba(255, 183, 0, 0.4);
+    }
+
+    .plan-name, 
+    .pricing-card-header h3,
+    .pricing-header h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: var(--text-white) !important;
+    }
+
+    .price-tag {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #FFB700 !important;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .price-tag span, 
+    .price-period {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.8) !important;
+        font-weight: 400;
+    }
+
+    .feature-heading {
+        color: #FFB700 !important;
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+    }
+
+    .feature-list li {
+        color: var(--text-light) !important;
+        margin-bottom: 0.6rem;
+        list-style: none;
+    }
+    
+    .feature-list li.excluded {
+        color: rgba(255, 255, 255, 0.4) !important;
+        text-decoration: line-through;
+    }
+
+    .cta-button {
+        background: var(--cta-gradient) !important;
+        color: white !important;
+        padding: 12px 35px;
+        border-radius: 50px;
+        text-decoration: none;
+        display: inline-block;
+        font-weight: 700;
+        margin-top: 2rem;
+        box-shadow: 0 10px 20px rgba(255, 140, 0, 0.3);
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(255, 140, 0, 0.4);
+    }
+    
+    .pricing-footer, .card-footer {
+        text-align: center;
+    }
+
+    /* --- ANIMATIONS --- */
+    @keyframes futuristicReveal {
+        0% {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            filter: blur(10px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+    }
+
+    .animate-on-scroll {
+        opacity: 0;
+    }
+
+    .animate-on-scroll.visible {
+        animation: futuristicReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .delay-100 { transition-delay: 0.1s; }
+    .delay-200 { transition-delay: 0.2s; }
+    .delay-300 { transition-delay: 0.3s; }
+</style>
 </head>
 <body>
 
@@ -35,14 +186,14 @@
     <main>
         <section>
             <div class="container">
-                <div class="section-header-centered">
+                <div class="section-header-centered animate-on-scroll">
                     <h2>GMB Pricing</h2>
-                    <p class="section-description">The best price just for you. Boost your local search presence with our specialized Google My Business optimization plans.</p>
+                    <p class="section-description animate-on-scroll delay-100">The best price just for you. Boost your local search presence with our specialized Google My Business optimization plans.</p>
                 </div>
 
                 <div class="services-grid">
                     <!-- Basic Plan -->
-                    <div class="service-card pricing-card">
+                    <div class="service-card pricing-card animate-on-scroll delay-100">
                         <div class="pricing-header">
                             <h3 class="plan-name">Basic Plan</h3>
                             <p class="price-tag">$350 <span class="price-period">/ Month</span></p>
@@ -99,7 +250,7 @@
                     </div>
 
                     <!-- Bronze Plan -->
-                    <div class="service-card pricing-card">
+                    <div class="service-card pricing-card animate-on-scroll delay-200">
                         <div class="pricing-header">
                             <h3 class="plan-name">Bronze Plan</h3>
                             <p class="price-tag">$550 <span class="price-period">/ Month</span></p>
@@ -158,7 +309,7 @@
                     </div>
 
                     <!-- Gold Plan -->
-                    <div class="service-card pricing-card">
+                    <div class="service-card pricing-card animate-on-scroll delay-300">
                         <div class="pricing-header">
                             <h3 class="plan-name">Gold Plan</h3>
                             <p class="price-tag">$800 <span class="price-period">/ Month</span></p>
@@ -227,5 +378,20 @@
 
     <script src="../js/script.js"></script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible'); // Re-trigger animation on scroll up/down
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+        });
+    </script>
 </body>
 </html>
