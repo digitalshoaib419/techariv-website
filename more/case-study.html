@@ -27,6 +27,202 @@
 
   gtag('config', 'G-HBXHFW9LXR');
 </script>
+<style>
+    /* --- CASE STUDY THEME STYLES --- */
+    :root {
+        --primary-color: #0387c4fd;
+        --accent-color: #FF8C00;
+        --text-dark: #333333;
+        --text-light: #666666;
+        --bg-light: #f9f9f9;
+        --success-green: #00AB55;
+    }
+
+    /* Tab Navigation */
+    .cs-tabs-container {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 4rem;
+        flex-wrap: wrap;
+    }
+
+    .cs-tab-btn {
+        padding: 14px 35px;
+        border-radius: 50px;
+        border: none;
+        background: #ffffff;
+        color: var(--text-light);
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cs-tab-btn:hover {
+        transform: translateY(-2px);
+        color: var(--primary-color);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .cs-tab-btn.active {
+        background: var(--primary-color);
+        color: #ffffff;
+        box-shadow: 0 10px 25px rgba(3, 135, 196, 0.3);
+    }
+
+    /* Content Sections */
+    .cs-section {
+        display: none;
+        animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .cs-section.active {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2.5rem;
+    }
+
+    /* Case Study Card */
+    .cs-card {
+        background: #ffffff;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(0,0,0,0.03);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cs-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .cs-card-header {
+        padding: 2rem 2rem 1rem;
+    }
+
+    .cs-badge {
+        display: inline-block;
+        padding: 6px 14px;
+        background: rgba(3, 135, 196, 0.1);
+        color: var(--primary-color);
+        border-radius: 30px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+    }
+
+    .cs-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin: 0 0 0.5rem 0;
+    }
+
+    .cs-industry {
+        font-size: 0.9rem;
+        color: #888;
+        font-weight: 500;
+    }
+
+    .cs-body {
+        padding: 0 2rem 2rem;
+        flex-grow: 1;
+    }
+
+    .cs-desc {
+        color: var(--text-light);
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+
+    .cs-metrics-grid {
+        background: var(--bg-light);
+        border-radius: 15px;
+        padding: 1.5rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+
+    .metric-item strong {
+        display: block;
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: var(--success-green);
+        line-height: 1.2;
+    }
+
+    .metric-item span {
+        font-size: 0.8rem;
+        color: #666;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* Testimonial Specifics */
+    .testi-card {
+        text-align: center;
+        padding: 3rem 2rem;
+    }
+
+    .testi-quote-icon {
+        font-size: 2rem;
+        color: rgba(255, 140, 0, 0.2);
+        margin-bottom: 1.5rem;
+    }
+
+    .testi-text {
+        font-size: 1.1rem;
+        font-style: italic;
+        color: #444;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+    }
+
+    .testi-author img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        object-fit: cover;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .testi-author h4 {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--text-dark);
+    }
+
+    .testi-author span {
+        font-size: 0.9rem;
+        color: var(--primary-color);
+        font-weight: 500;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+        .cs-tabs-container { gap: 0.5rem; }
+        .cs-tab-btn { padding: 10px 20px; font-size: 0.9rem; }
+        .cs-metrics-grid { grid-template-columns: 1fr; }
+    }
+</style>
 </head>
 <body>
 
@@ -37,91 +233,165 @@
             <div class="container">
                 <div class="fade-in section-header-centered">
                     <div class="text-reveal">
-                        <h1><span>Proven Results. Real Growth.</span></h1>
+                        <h1><span>Our Success Stories</span></h1>
                     </div>
-                    <p class="max-width-content">Explore how we've partnered with ambitious brands to overcome challenges and achieve remarkable success in the digital landscape.</p>
+                    <p class="max-width-content">Real businesses, real challenges, and the data-driven strategies we used to overcome them. Explore our track record of digital excellence.</p>
                 </div>
 
-                <!-- New Case Study List -->
-                <div class="case-study-list stagger-children-fade">
+                <!-- Tab Navigation -->
+                <div class="cs-tabs-container">
+                    <button class="cs-tab-btn active" onclick="switchTab('seo')">SEO, PPC & Meta Ads</button>
+                    <button class="cs-tab-btn" onclick="switchTab('webdev')">Website Development</button>
+                    <button class="cs-tab-btn" onclick="switchTab('testimonials')">Client Testimonials</button>
+                </div>
 
-                    <!-- Case Study 1: Sara Elizabeth Skincare -->
-                    <div class="case-study-entry">
-                        <div class="case-study-image">
-                            <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=1932&auto=format&fit=crop" alt="Modern FinTech application on a smartphone">
+                <!-- SEO & PPC Content -->
+                <div id="seo" class="cs-section active">
+                    <!-- Case Study 1 -->
+                    <div class="cs-card">
+                        <div class="cs-card-header">
+                            <span class="cs-badge">Local SEO & PPC</span>
+                            <h3 class="cs-title">Summit Roofing & Solar</h3>
+                            <span class="cs-industry">Industry: Local Home Services (Denver, CO)</span>
                         </div>
-                        <div class="case-study-details">
-                            <span class="category">FinTech & Mobile App</span>
-                            <h3>QuantumLeap Finance</h3>
-                            <p class="description">For this disruptive FinTech startup, we engineered a full-funnel digital strategy, focusing on user acquisition and brand trust through targeted PPC and content marketing.</p>
-                            <div class="results-grid">
-                                <div class="result-item"><strong>+300%</strong><span>User Acquisition</span></div>
-                                <div class="result-item"><strong>-50%</strong><span>Cost Per Install</span></div>
-                                <div class="result-item"><strong>Top 5</strong><span>App Store Ranking</span></div>
+                        <div class="cs-body">
+                            <p class="cs-desc"><strong>Problem:</strong> Despite high service quality, Summit was invisible in local map packs and paying too much for low-quality leads.</p>
+                            <p class="cs-desc"><strong>Strategy:</strong> We implemented a hyper-local SEO strategy, optimized their Google Business Profile, and launched targeted PPC campaigns for storm damage keywords.</p>
+                            <div class="cs-metrics-grid">
+                                <div class="metric-item"><strong>+115%</strong><span>Organic Calls</span></div>
+                                <div class="metric-item"><strong>Top 3</strong><span>Map Pack Ranking</span></div>
+                                <div class="metric-item"><strong>-40%</strong><span>Cost Per Lead</span></div>
+                                <div class="metric-item"><strong>4.2x</strong><span>ROAS</span></div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Case Study 2: Architect SF -->
-                    <div class="case-study-entry">
-                        <div class="case-study-image">
-                            <img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=1931&auto=format&fit=crop" alt="SaaS platform dashboard on a laptop screen">
+                    <!-- Case Study 2 -->
+                    <div class="cs-card">
+                        <div class="cs-card-header">
+                            <span class="cs-badge">Meta Ads & E-commerce</span>
+                            <h3 class="cs-title">Velvet & Vine</h3>
+                            <span class="cs-industry">Industry: Fashion E-commerce</span>
                         </div>
-                        <div class="case-study-details">
-                            <span class="category">SaaS & B2B Marketing</span>
-                            <h3>SyncFlow.io</h3>
-                            <p class="description">We overhauled the SEO and content strategy for this B2B SaaS platform, resulting in a massive increase in organic demo requests and a significant reduction in customer acquisition cost.</p>
-                            <div class="results-grid">
-                                <div class="result-item"><strong>+450%</strong><span>Organic Leads</span></div>
-                                <div class="result-item"><strong>-35%</strong><span>Acquisition Cost</span></div>
-                                <div class="result-item"><strong>#1 Rank</strong><span>for "Project Sync Tools"</span></div>
+                        <div class="cs-body">
+                            <p class="cs-desc"><strong>Problem:</strong> High cart abandonment rates and stagnant revenue growth from social media channels.</p>
+                            <p class="cs-desc"><strong>Strategy:</strong> Deployed a full-funnel Meta Ads strategy with dynamic retargeting and lookalike audiences based on high-LTV customers.</p>
+                            <div class="cs-metrics-grid">
+                                <div class="metric-item"><strong>+72%</strong><span>Total Revenue</span></div>
+                                <div class="metric-item"><strong>4.8x</strong><span>Return on Ad Spend</span></div>
+                                <div class="metric-item"><strong>+25%</strong><span>Click-Through Rate</span></div>
+                                <div class="metric-item"><strong>-30%</strong><span>Cart Abandonment</span></div>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Case Study 3: iPaatti.us -->
-                    <div class="case-study-entry">
-                        <div class="case-study-image">
-                            <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1932&auto=format&fit=crop" alt="E-commerce wellness and beauty products">
-                        </div>
-                        <div class="case-study-details">
-                            <span class="category">E-commerce & Branding</span>
-                            <h3>VitaGlow Naturals</h3>
-                            <p class="description">We launched a comprehensive branding and social media campaign that resonated with health-conscious consumers, driving a surge in online sales and building a loyal community.</p>
-                            <div class="results-grid">
-                                <div class="result-item"><strong>+200%</strong><span>Online Sales</span></div>
-                                <div class="result-item"><strong>+500K</strong><span>Social Reach</span></div>
-                                <div class="result-item"><strong>4.9/5</strong><span>Product Rating</span></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Case Study 4: Atomic Boerboels -->
-                    <div class="case-study-entry">
-                        <div class="case-study-image">
-                            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2070&auto=format&fit=crop" alt="Professional local cleaning service team at work">
-                        </div>
-                        <div class="case-study-details">
-                            <span class="category">Local SEO & Web Dev</span>
-                            <h3>UrbanFix</h3>
-                            <p class="description">We developed a high-performance local marketplace and executed a hyper-targeted local SEO campaign, connecting thousands of users with local service providers.</p>
-                            <div class="results-grid">
-                                <div class="result-item"><strong>+1,200%</strong><span>Local Traffic</span></div>
-                                <div class="result-item"><strong>Top 3</strong><span>Map Pack Listing</span></div>
-                                <div class="result-item"><strong>+600%</strong><span>Service Bookings</span></div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Web Development Content -->
+                <div id="webdev" class="cs-section">
+                    <!-- Case Study 3 -->
+                    <div class="cs-card">
+                        <div class="cs-card-header">
+                            <span class="cs-badge">Web Development & UX</span>
+                            <h3 class="cs-title">Apex Logistics Group</h3>
+                            <span class="cs-industry">Industry: B2B Logistics</span>
+                        </div>
+                        <div class="cs-body">
+                            <p class="cs-desc"><strong>Problem:</strong> An outdated, slow website was causing a high bounce rate and failing to convert enterprise leads.</p>
+                            <p class="cs-desc"><strong>Strategy:</strong> Custom WordPress development with a focus on Core Web Vitals, speed optimization, and a streamlined "Request a Quote" user flow.</p>
+                            <div class="cs-metrics-grid">
+                                <div class="metric-item"><strong>98/100</strong><span>Page Speed Score</span></div>
+                                <div class="metric-item"><strong>+65%</strong><span>Quote Requests</span></div>
+                                <div class="metric-item"><strong>-45%</strong><span>Bounce Rate</span></div>
+                                <div class="metric-item"><strong>+80%</strong><span>Mobile Traffic</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case Study 4 -->
+                    <div class="cs-card">
+                        <div class="cs-card-header">
+                            <span class="cs-badge">Healthcare Web Design</span>
+                            <h3 class="cs-title">Dr. Emily Carter Orthodontics</h3>
+                            <span class="cs-industry">Industry: Medical / Healthcare</span>
+                        </div>
+                        <div class="cs-body">
+                            <p class="cs-desc"><strong>Problem:</strong> Patients found it difficult to book appointments online, leading to phone congestion and lost opportunities.</p>
+                            <p class="cs-desc"><strong>Strategy:</strong> Designed a mobile-first, accessible website with an integrated real-time booking engine and patient portal.</p>
+                            <div class="cs-metrics-grid">
+                                <div class="metric-item"><strong>+90%</strong><span>Online Bookings</span></div>
+                                <div class="metric-item"><strong>+55%</strong><span>New Patient Inquiries</span></div>
+                                <div class="metric-item"><strong>1.5s</strong><span>Load Time</span></div>
+                                <div class="metric-item"><strong>#1</strong><span>Local Organic Rank</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonials Content -->
+                <div id="testimonials" class="cs-section">
+                    <div class="cs-card testi-card">
+                        <div class="testi-quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                        <p class="testi-text">"TechAriv didn't just run ads; they understood our seasonality and business model. The phone hasn't stopped ringing since we started the local SEO campaign. Truly a game changer for us."</p>
+                        <div class="testi-author">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" alt="Mark Stevenson">
+                            <h4>Mark Stevenson</h4>
+                            <span>Founder, Summit Roofing & Solar</span>
+                        </div>
+                    </div>
+
+                    <div class="cs-card testi-card">
+                        <div class="testi-quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                        <p class="testi-text">"We've worked with three other agencies before finding TechAriv. They are the first to actually care about profitability, not just vanity metrics. Our ROAS has never been higher."</p>
+                        <div class="testi-author">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" alt="Sarah Jenkins">
+                            <h4>Sarah Jenkins</h4>
+                            <span>Marketing Director, Velvet & Vine</span>
+                        </div>
+                    </div>
+
+                    <div class="cs-card testi-card">
+                        <div class="testi-quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+                        <p class="testi-text">"Our new website is a lead generation machine. It's professional, incredibly fast, and exactly what we needed to scale our logistics operations to the next level."</p>
+                        <div class="testi-author">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" alt="David Chen">
+                            <h4>David Chen</h4>
+                            <span>CTO, Apex Logistics Group</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>
 
     <div id="footer-placeholder"></div>
 
-    <!-- ================== BACK TO TOP BUTTON ================== -->
     <a href="#" class="back-to-top-btn" aria-label="Back to top">↑</a>
 
     <script src="../js/script.js"></script>
+    <script>
+        function switchTab(tabId) {
+            // Remove active class from all tabs and sections
+            document.querySelectorAll('.cs-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.cs-section').forEach(sec => sec.classList.remove('active'));
+
+            // Add active class to clicked tab
+            const clickedBtn = Array.from(document.querySelectorAll('.cs-tab-btn')).find(btn => btn.getAttribute('onclick').includes(tabId));
+            if(clickedBtn) clickedBtn.classList.add('active');
+
+            // Show target section
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // Check URL params on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+            if (category && ['seo', 'webdev', 'testimonials'].includes(category)) {
+                switchTab(category);
+            }
+        });
+    </script>
 
 </body>
 </html>
